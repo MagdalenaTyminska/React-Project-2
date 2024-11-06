@@ -17,7 +17,7 @@ interface AppState {
 	filter: string;
 }
 
-class App extends Component<{}, AppState> {
+class App extends Component<Record<string, never>, AppState> {
 	constructor(props: {}) {
 		super(props);
 		this.state = {
