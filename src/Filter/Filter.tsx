@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import scss from './Filter.module.scss';
 
 interface FilterProps {
 	filter: string;
@@ -10,8 +11,8 @@ export class Filter extends Component<FilterProps> {
 		const { filter, handleSearch } = this.props;
 		return (
 			<>
-				<p>Find contacts by name or phone number</p>
-				<input type='text' value={filter} onChange={handleSearch} placeholder='Search contacts...' />
+				<p className={scss.filterTitle}>Find contacts by name or phone number</p>
+				<input className={scss.filterInput} type='text' value={filter} onChange={handleSearch} placeholder='Search contacts...' />
 			</>
 		);
 	}

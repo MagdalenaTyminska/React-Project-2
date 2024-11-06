@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import scss from './ContactList.module.scss';
 
 interface Contact {
 	id: string;
@@ -16,11 +17,13 @@ class ContactList extends Component<ContactListProps> {
 		const { contacts, onRemove } = this.props;
 
 		return (
-			<ul>
+			<ul className={scss.list}>
 				{contacts.map((contact) => (
 					<li key={contact.id}>
 						{contact.name} - {contact.number}
-						<button onClick={() => onRemove(contact.id)}>Delete</button>
+						<button className={scss.list__button} onClick={() => onRemove(contact.id)}>
+							Delete
+						</button>
 					</li>
 				))}
 			</ul>

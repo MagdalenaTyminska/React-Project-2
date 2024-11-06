@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import { Component } from 'react';
 import { Section } from './Section/Section';
 import { Form } from './Form/Form';
@@ -48,7 +48,7 @@ class App extends Component<{}, AppState> {
 		const filteredContacts = contacts.filter((contact) => contact.name.toLowerCase().includes(filter.toLowerCase()) || contact.number.includes(filter));
 
 		return (
-			<div>
+			<div className='boxApp'>
 				<Section title='Phonebook'>
 					<Form addContact={this.addContact} />
 				</Section>

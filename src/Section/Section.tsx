@@ -1,4 +1,5 @@
 import { Component, ReactNode } from 'react';
+import scss from './Section.module.scss';
 
 type SectionProps = {
 	title: string;
@@ -10,8 +11,8 @@ export class Section extends Component<SectionProps> {
 		const { title, children } = this.props;
 
 		return (
-			<section>
-				<h2>{title}</h2>
+			<section className={scss.section}>
+				<h2 className={scss.section__title}>{title}</h2>
 				{children}
 			</section>
 		);
