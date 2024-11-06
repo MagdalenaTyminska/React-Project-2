@@ -3,7 +3,7 @@ import { Component } from 'react';
 import { Section } from './Section/Section';
 import { Form } from './Form/Form';
 import { ContactList } from './ContactList/ContactList';
-import { Filter } from './Filter/Filter';
+import { Filter } from './Filter';
 import usersData from './users.json';
 
 interface Contact {
@@ -14,7 +14,6 @@ interface Contact {
 
 interface AppState {
 	contacts: Contact[];
-	filter: string;
 }
 
 class App extends Component<{}, AppState> {
@@ -44,17 +43,14 @@ class App extends Component<{}, AppState> {
 	};
 
 	render() {
-		const { contacts, filter } = this.state;
-		const filteredContacts = contacts.filter((contact) => contact.name.toLowerCase().includes(filter.toLowerCase()) || contact.number.includes(filter));
-
 		return (
 			<div>
 				<Section title='Phonebook'>
 					<Form addContact={this.addContact} />
 				</Section>
 				<Section title='Contacts'>
-					<Filter handleSearch={this.handleSearch} filter={filter} />
-					<ContactList contacts={filteredContacts} onRemove={this.handleRemove} />
+					<Filter handleSearch={this.handleSearch} filter={this.state.filter} />
+					<ContactList contacts={this.state.contacts} />
 				</Section>
 			</div>
 		);

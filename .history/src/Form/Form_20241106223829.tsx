@@ -21,10 +21,7 @@ class Form extends Component<FormProps, FormState> {
 
 	handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = event.target;
-		this.setState((prevState) => ({
-			...prevState,
-			[name]: value,
-		}));
+		this.setState({ [name]: value } as Pick<FormState, keyof FormState>);
 	};
 
 	handleSubmit = (event: React.FormEvent) => {
@@ -32,12 +29,12 @@ class Form extends Component<FormProps, FormState> {
 		const { name, number } = this.state;
 		if (name && number) {
 			const newContact = {
-				id: nanoid(),
+				id: `id-${Date.now()}`, 
 				name,
 				number,
 			};
 			this.props.addContact(newContact);
-			this.setState({ name: '', number: '' });
+			this.setState({ name: '', number: '' }); 
 		}
 	};
 

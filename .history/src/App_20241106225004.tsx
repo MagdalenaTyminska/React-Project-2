@@ -22,7 +22,7 @@ class App extends Component<{}, AppState> {
 		super(props);
 		this.state = {
 			contacts: usersData,
-			filter: '',
+			filter: '', // Dodajemy stan dla filtra
 		};
 	}
 
@@ -45,7 +45,7 @@ class App extends Component<{}, AppState> {
 
 	render() {
 		const { contacts, filter } = this.state;
-		const filteredContacts = contacts.filter((contact) => contact.name.toLowerCase().includes(filter.toLowerCase()) || contact.number.includes(filter));
+		const filteredContacts = contacts.filter((contact) => contact.name.toLowerCase().includes(filter.toLowerCase()));
 
 		return (
 			<div>

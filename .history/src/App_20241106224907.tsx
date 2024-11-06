@@ -14,7 +14,6 @@ interface Contact {
 
 interface AppState {
 	contacts: Contact[];
-	filter: string;
 }
 
 class App extends Component<{}, AppState> {
@@ -22,7 +21,6 @@ class App extends Component<{}, AppState> {
 		super(props);
 		this.state = {
 			contacts: usersData,
-			filter: '',
 		};
 	}
 
@@ -44,17 +42,14 @@ class App extends Component<{}, AppState> {
 	};
 
 	render() {
-		const { contacts, filter } = this.state;
-		const filteredContacts = contacts.filter((contact) => contact.name.toLowerCase().includes(filter.toLowerCase()) || contact.number.includes(filter));
-
 		return (
 			<div>
 				<Section title='Phonebook'>
 					<Form addContact={this.addContact} />
 				</Section>
 				<Section title='Contacts'>
-					<Filter handleSearch={this.handleSearch} filter={filter} />
-					<ContactList contacts={filteredContacts} onRemove={this.handleRemove} />
+					<Filter handleSearch={this.handleSearch} filter={this.state.filter} />
+					<ContactList contacts={this.state.contacts} />
 				</Section>
 			</div>
 		);
