@@ -18,7 +18,7 @@ interface AppState {
 }
 
 class App extends Component<Record<string, never>, AppState> {
-	constructor(props: {}) {
+	constructor(props: Record<string, never>) {
 		super(props);
 		this.state = {
 			contacts: usersData,
